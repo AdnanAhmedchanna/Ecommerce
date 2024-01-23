@@ -1,8 +1,12 @@
 package com.Ecommerce.Ecommerce.in.Controllers;
 
 
+import com.Ecommerce.Ecommerce.in.Entitiy.Cart;
 import com.Ecommerce.Ecommerce.in.Entitiy.Products;
-import com.Ecommerce.Ecommerce.in.Repo.Repo;
+import com.Ecommerce.Ecommerce.in.Repo.ProductRepo;
+import com.Ecommerce.Ecommerce.in.Repo.UserRepo;
+import com.Ecommerce.Ecommerce.in.Sevice.Service;
+import com.Ecommerce.Ecommerce.in.Sevice.ServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,38 +18,26 @@ import java.util.Optional;
 @RestController
 public class Controllers {
     @Autowired
-    public Provider.Service service;
-    @Autowired
-    public Repo repo;
+    public Service service;
     @Autowired
     public Products products;
+    public Cart cart;
 
-    @GetMapping("/products/{product_name}")
-    private String getProductByName(@PathVariable String product_name){
-        Optional<Long> productsOptional = repo.findById(products);
+    @Autowired
+    public UserRepo userRepo;
 
-        if (productsOptional.isPresent()){
-            Long products = productsOptional.get();
-            return "Product is found" + products.toString();
-
-        }
-        else {
-            return "Product not found";
-        }
+    @GetMapping("/products/{id}")
+    private String findById(@PathVariable("id") int id){
+       return service.findById(id).get().toString();
 
 }
     @RestController("/cart")
     public class CartController{
 
-        @PutMapping
-        public ResponseEntity<String> saveProducts(@RequestBody Products products){
-            try {
-                repo.save(products);
-                return ResponseEntity.ok("Product saved succesasfully");
-            }
-            catch (Exception e){
-                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Internal error occured");
-            }
+        @PutMapping("/carts")
+        public Cart saveCart(@RequestBody Cart cart){
+           service.saveDepartment(cart);
+           return cart;
         }
 
     }
