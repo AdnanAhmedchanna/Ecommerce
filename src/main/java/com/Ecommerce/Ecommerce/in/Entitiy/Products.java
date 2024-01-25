@@ -13,7 +13,6 @@ public class Products {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     String product_name;
     int price;
     double rating;
