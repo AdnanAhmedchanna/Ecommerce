@@ -13,6 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Provider;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -21,6 +23,7 @@ public class Controllers {
     public Service service;
     @Autowired
     public Products products;
+    @Autowired
     public Cart cart;
 
     @Autowired
@@ -40,5 +43,13 @@ public class Controllers {
            return cart;
         }
 
+        @DeleteMapping
+        public String deleteCart(){
+            List<Cart> cart = new ArrayList<>();
+            service.deleteAll(cart);
+            return "/redirect:Checkout";
+
+        }
     }
+
 }

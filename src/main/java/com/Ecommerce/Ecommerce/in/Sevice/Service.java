@@ -6,9 +6,13 @@ import com.Ecommerce.Ecommerce.in.Repo.ProductRepo;
 import com.Ecommerce.Ecommerce.in.Repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 @org.springframework.stereotype.Service
 public interface Service extends UserRepo {
     public Cart saveDepartment(Cart cart);
 
     ThreadLocal<Object> findById(int id);
+
+    void deleteAll(List<Cart> cart);
 }
