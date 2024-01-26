@@ -16,5 +16,8 @@ import java.util.function.Function;
 
 public  interface ServiceImp extends Service {
     public Cart saveDepartment(Cart cart);
+    public  Cart deleteCart();
+
+    public List<Cart> getCart();
 
 }

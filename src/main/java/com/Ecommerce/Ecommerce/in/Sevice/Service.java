@@ -15,4 +15,6 @@ public interface Service extends UserRepo {
     ThreadLocal<Object> findById(int id);
 
     void deleteAll(List<Cart> cart);
+
+    List<Cart> findAll(Cart cart);
 }

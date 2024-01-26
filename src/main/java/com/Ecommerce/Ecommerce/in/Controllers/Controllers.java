@@ -34,7 +34,7 @@ public class Controllers {
        return service.findById(id).get().toString();
 
 }
-    @RestController("/cart")
+    @RestController
     public class CartController{
 
         @PutMapping("/carts")
@@ -43,13 +43,19 @@ public class Controllers {
            return cart;
         }
 
-        @DeleteMapping
+        @DeleteMapping("/Checkout")
         public String deleteCart(){
             List<Cart> cart = new ArrayList<>();
             service.deleteAll(cart);
             return "/redirect:Checkout";
 
         }
+        @GetMapping("/cart")
+        public List<Cart> getCart(){
+            return service.findAll(cart);
+
+        }
+
     }
 
 }
