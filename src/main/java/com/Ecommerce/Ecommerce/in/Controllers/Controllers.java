@@ -35,12 +35,13 @@ public class Controllers {
 
 }
     @RestController
+    @RequestMapping("/Cart")
     public class CartController{
 
-        @PutMapping("/carts")
-        public Cart saveCart(@RequestBody Cart cart){
-           service.saveDepartment(cart);
-           return cart;
+        @PutMapping("/cart/{id}")
+        public String saveCart(@PathVariable("id") int id){
+           service.save(id);
+           return "/redirect/cart";
         }
 
         @DeleteMapping("/Checkout")
@@ -55,6 +56,7 @@ public class Controllers {
             return service.findAll(cart);
 
         }
+
 
     }
 
