@@ -1,10 +1,11 @@
 package com.Ecommerce.Ecommerce.in.Repo;
 
 import com.Ecommerce.Ecommerce.in.Entitiy.Products;
-import jakarta.persistence.Id;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface ProductRepo extends JpaRepository<Integer, Id> {
+@Repository
+public interface ProductRepo<id> extends JpaRepository<id, Integer> {
 
 }
 

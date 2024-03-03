@@ -19,15 +19,21 @@ import java.util.Optional;
 
 @RestController
 public class Controllers {
-    @Autowired
     public Service service;
-    @Autowired
+
     public Products products;
-    @Autowired
+
     public Cart cart;
 
-    @Autowired
+
     public UserRepo userRepo;
+
+    @CrossOrigin
+    @RequestMapping("/home")
+    public String home(){
+        return "/home";
+    }
+
 
     @GetMapping("/products/{id}")
     private String findById(@PathVariable("id") int id){

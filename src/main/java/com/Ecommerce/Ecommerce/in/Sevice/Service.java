@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-@org.springframework.stereotype.Service
+
 public interface Service extends UserRepo {
     public Cart saveDepartment(Cart cart);
 
